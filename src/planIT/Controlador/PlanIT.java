@@ -21,6 +21,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
+import planIT.Modelo.DAO.Impl.Mongo.UsuarioDAOImplMongo;
+import planIT.Modelo.Usuario;
 
 /**
  *
@@ -32,7 +34,7 @@ public class PlanIT {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        ConexionBD bd = new ConexionBD();
+        /*ConexionBD bd = new ConexionBD();
         Mongo mongo = bd.abrirConexion();
         DB planIT = mongo.getDB(ConexionBD.getDATABASE());
         DBCollection usuarios = planIT.getCollection("usuarios");
@@ -58,9 +60,18 @@ public class PlanIT {
         //System.out.println(cursor.next());
 //        System.out.println(usuarios.find(fields).next().get("pass").equals(generarHashConSal(pass, usuarios.find(fields).next().get("sal").toString().getBytes())));
 //        System.out.println("Generada a partir de datos: " + generarHashConSal(pass, usuarios.find(fields).next().get("sal").toString().getBytes()));
-         System.out.println(validarPass(pass, usuarios.find(fields).next().get("sal").toString().getBytes(), usuarios.find(fields).next().get("pass").toString()));
+         System.out.println(validarPass(pass, usuarios.find(fields).next().get("sal").toString().getBytes(), usuarios.find(fields).next().get("pass").toString()));*/
         
-               
+        UsuarioDAOImplMongo uDI = new UsuarioDAOImplMongo();
+        
+        Usuario usuario = new Usuario();
+        
+        usuario.setEmail("juana@email.com");
+        usuario.setNombre("Nuevo nombre");
+        //usuario = uDI.buscar(usuario);
+        //System.out.println(usuario.getId());
+        
+        uDI.actualizar(usuario);
     }
 
     public static String generarSal() {

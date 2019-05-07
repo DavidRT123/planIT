@@ -5,18 +5,17 @@
  */
 package planIT.Modelo.DAO;
 
-import com.mongodb.BasicDBObject;
+import java.util.ArrayList;
 
 /**
  *
  * @author mdfda
- * @param <Clase>
- * @param <ID>
+ * 
  */
 public interface DAO<Clase, ID> {
-    public Boolean insertar(Clase obj);
+    public void insertar(Clase obj);
     public void actualizar(Clase obj);
-    public Clase buscar(Clase obj);
-    public BasicDBObject rellenar(Clase obj);
-    public int id();
+    public void eliminar(Clase obj);
+    public ArrayList<Clase> buscar(Clase obj);
+    public void rellenar(Clase obj);
 }

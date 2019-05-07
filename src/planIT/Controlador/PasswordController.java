@@ -19,11 +19,8 @@ import javax.crypto.spec.PBEKeySpec;
  *
  * @author David
  */
-public class Password {
-    
-    private String sal;
-    private String pass;
-    
+public class PasswordController {
+
     public static String generarSal() {
         SecureRandom random = new SecureRandom();
         byte bytes[] = new byte[20];
@@ -37,9 +34,7 @@ public class Password {
             PBEKeySpec spec = new PBEKeySpec(input.toCharArray(), sal, 256, 256);
             SecretKeyFactory skf = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA512");
             hash = skf.generateSecret(spec).getEncoded();
-        } catch (InvalidKeySpecException ex) {
-            Logger.getLogger(PlanIT.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (NoSuchAlgorithmException ex) {
+        } catch (InvalidKeySpecException | NoSuchAlgorithmException ex) {
             Logger.getLogger(PlanIT.class.getName()).log(Level.SEVERE, null, ex);
         }
         return Base64.getEncoder().encodeToString(hash);
@@ -51,10 +46,10 @@ public class Password {
         System.out.println(hashConSalGenerado + " = " + hashConSal);
 
         if(hashConSalGenerado.equalsIgnoreCase(hashConSal)){
-            System.out.println("COINCIDE");
+            System.out.println("PASS COINCIDE");
             validado = true;
         }else{
-            System.out.println("NO COINCIDE");
+            System.out.println("PASS NO COINCIDE");
             validado = false;
         }
         return validado;

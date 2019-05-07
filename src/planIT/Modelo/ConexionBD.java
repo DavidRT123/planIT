@@ -5,11 +5,9 @@
  */
 package planIT.Modelo;
 
-import com.mongodb.DB;
-import com.mongodb.Mongo;
-import java.net.UnknownHostException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import com.mongodb.MongoClient;
+import com.mongodb.client.MongoDatabase;
+
 
 /**
  *
@@ -22,22 +20,13 @@ public class ConexionBD {
         return BBDD;
     }
     
-    public static DB abrirConexion(){
-        Mongo mongo = null;
-        try {
-            mongo = new Mongo("localhost", 27017);
-        } catch (UnknownHostException ex) {
-            Logger.getLogger(ConexionBD.class.getName()).log(Level.SEVERE, null, ex);
-        }        
-        
-        if(mongo == null){
-            return mongo.getDB(BBDD);
-        }else{
-            return null;
-        }
+    public static MongoDatabase abrirConexion(){
+        MongoClient mongo = null;
+        mongo = new MongoClient("localhost", 27017);        
+        return mongo.getDatabase(BBDD);
     }
     
-    public static void cerrarConexion(Mongo mongo){
+    public static void cerrarConexion(MongoClient mongo){
         if(mongo != null){
             mongo.close();
         }

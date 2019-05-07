@@ -11,8 +11,8 @@ package planIT.Modelo;
  */
 public class Usuario{
     
-    private int id;
     private String email;
+    private String nombre;
     private String pass;
     private String sal;
     private String foto;
@@ -22,9 +22,24 @@ public class Usuario{
     private String estiloAlerta;
     private String sonidoAlerta;
 
-    public Usuario(int id, String email, String pass, String sal, String foto, String colorPrincipal, String colorSecundario, String disposicion, String estiloAlerta, String sonidoAlerta) {
-        this.id = id;
+    public Usuario(){}
+    
+    public Usuario(String email, String pass) {
         this.email = email;
+        this.nombre = null;
+        this.pass = pass;
+        this.sal = null;
+        this.foto = null;
+        this.colorPrincipal = null;
+        this.colorSecundario = null;
+        this.disposicion = null;
+        this.estiloAlerta = null;
+        this.sonidoAlerta = null;
+    }
+
+    public Usuario(String email, String nombre, String pass, String sal, String foto, String colorPrincipal, String colorSecundario, String disposicion, String estiloAlerta, String sonidoAlerta) {
+        this.email = email;
+        this.nombre = nombre;
         this.pass = pass;
         this.sal = sal;
         this.foto = foto;
@@ -35,20 +50,20 @@ public class Usuario{
         this.sonidoAlerta = sonidoAlerta;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public String getEmail() {
         return email;
     }
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public String getPass() {

@@ -12,5 +12,5 @@ import planIT.Modelo.Alerta;
  * @author David
  */
 public interface AlertaDAO extends DAO<Alerta, Integer>{
-    public void eliminar(Alerta alerta);
+    
 }

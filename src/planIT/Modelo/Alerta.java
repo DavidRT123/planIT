@@ -7,7 +7,7 @@ package planIT.Modelo;
 
 /**
  *
- * @author David
+ * @author driquelme
  */
 public class Alerta {
     
